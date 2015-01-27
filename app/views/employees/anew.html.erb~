@@ -1,0 +1,14 @@
+<% content_for(:page_title, "Edit Employee details") %>
+<% content_for :emp_sel do %>
+
+<% if @employee.separation_date == nil %>
+
+<h3> <%= @employee.first_name+' '+@employee.last_name %> </h3>
+<div id="emp_det">
+  <%= render "anew_employee_details" %>
+</div>
+<% else %>
+<h3> <%= @employee.first_name+' '+@employee.last_name %> has already separated</h3>
+<% end %>
+<% end %>
+

@@ -1,0 +1,98 @@
+<% content_for(:page_title, "Leave Request Details") %>
+<% content_for :emp_sel do %>
+  <h3>Leave Request Details</h3>
+<% if @leave.is_new? && @leave.requester_emp_id!=@emp.emp_id %>
+<div id="lv_dtl">
+  <%=form_for :leave, :url=>action_leave_employee_leafe_path, :html => {:class => "leave_apprvl_form"} do |f|%>
+   <fieldset id="lv_req_dtl">
+        <div id="emp_req_dtls">
+          <label for="leave_req_id">Ref Id:</label>
+          <span class="emp_lv_dt"><%=@leave.ref_id%></span><br/><br/>
+          <label for="employee_name">Requester:</label>
+          <span class="emp_lv_dt"><%=@leave.employee.first_name%> <%=@leave.employee.last_name%></span><br/></br>
+          <label for="employee_name">Manager:</label>
+          <span class="emp_lv_dt"><%=Employee.find_by_emp_id(@leave.employee.manager_emp_id).first_name%> <%=Employee.find_by_emp_id(@leave.employee.manager_emp_id).last_name%></span><br/></br>
+          <label for="leave_type">Leave Type:</label>
+          <span class="emp_lv_dt"><%=@leave.leave_type%></span><br/><br/>
+          <label for="leave_start_date">Start Date:</label>
+          <span class="emp_lv_dt"><%=@leave.start_date.strftime('%a, %d-%b-%Y')%></span><br/><br/>
+          <label for="leave_end_date">End Date:</label>
+          <span class="emp_lv_dt"><%=@leave.end_date.strftime('%a, %d-%b-%Y')%></span><br/><br/>
+          <label for="no_of_days">No. of days:</label>
+          <span class="emp_lv_dt"><%=@leave.no_of_days%></span><br/><br/>
+          <label for="request_remarks">Request Remarks:</label>
+          <span class="emp_lv_dt"><%=@leave.request_remarks%></span><br/><br/>
+          <label for="leave_request_date">Request Date:</label>
+          <span class="emp_lv_dt"><%=@leave.request_date.strftime('%a, %d-%b-%Y')%></span><br/><br/><br/>
+          <label for="employee_name">Leave Request Approver:</label>
+          <span class="emp_lv_dt"><%=@leave.employee.find_leave_approver.first_name%> <%=@leave.employee.find_leave_approver.last_name%></span><br/></br>
+          <label for="status">Action:</label>
+          <%=f.select :status, options_for_select([['Approve','Approved'],['Reject','Rejected'],['Reapply','Reapply']]) %><br/><br/>
+          <label for="action_remarks">Action Remarks:</label>
+         <center> <%=f.text_area :action_remarks, :cols=>55, :rows=>4 %></center><br/><br/>
+          <%=f.hidden_field :requester_emp_id, :value => @leave.requester_emp_id %>
+          <%=f.hidden_field :action_date%>
+          <%=f.hidden_field :id, :value => @leave.id %>
+
+      </div>
+      <div class="submit">
+          <%= f.submit 'Action', :class => 'leave_action_button' %>
+     </div>
+
+    </fieldset>
+  <% end %>
+</div>
+
+<% else %>
+      <div id="lv_dtl">
+     <fieldset id="lv_req_dtl">
+         <div id="emp_req_dtls">
+          <label for="leave_req_id">Ref Id:</label>
+          <span class="emp_lv_dt"><%=@leave.ref_id%></span><br/><br/>
+          <label for="employee_name">Requester:</label>
+          <span class="emp_lv_dt"><%=@leave.employee.first_name%> <%=@leave.employee.last_name%></span><br/></br>
+          <label for="employee_name">Manager:</label>
+          <span class="emp_lv_dt"><%=Employee.find_by_emp_id(@leave.employee.manager_emp_id).first_name%> <%=Employee.find_by_emp_id(@leave.employee.manager_emp_id).last_name%></span><br/></br>
+          <label for="leave_type">Leave Type:</label>
+          <span class="emp_lv_dt"><%=@leave.leave_type%></span><br/><br/>
+          <label for="leave_start_date">Start Date:</label>
+          <span class="emp_lv_dt"><%=@leave.start_date.strftime('%a, %d-%b-%Y')%></span><br/><br/>
+          <label for="leave_end_date">End Date:</label>
+          <span class="emp_lv_dt"><%=@leave.end_date.strftime('%a, %d-%b-%Y')%></span><br/><br/>
+          <label for="no_of_days">No. of leave days:</label>
+          <span class="emp_lv_dt"><%=@leave.no_of_days%></span><br/><br/>
+          <label for="request_remarks">Request Remarks:</label>
+          <span class="emp_lv_dt"><%=@leave.request_remarks%></span><br/><br/>
+          <label for="leave_request_date">Request Date:</label>
+          <span class="emp_lv_dt"><%=@leave.request_date.strftime('%a, %d-%b-%Y')%></span><br/><br/><br/>
+          <label for="employee_name">Leave Request Approver:</label>
+          <span class="emp_lv_dt"><%=@leave.employee.find_leave_approver.first_name%> <%=@leave.employee.find_leave_approver.last_name%></span><br/></br>
+          <label for="status">Status:</label>
+
+          <% if !@leave.is_new? %>
+             <span class="emp_lv_dt"><%=@leave.status%></span><br/><br/>
+              <label for="action">Action Date:</label>
+              <span class="emp_lv_dt"><%=@leave.action_date.strftime('%a, %d-%b-%Y')%></span><br/><br/>
+              <label for="action_remarks">Action Remarks:</label>
+              <span class="emp_lv_dt"><%=@leave.action_remarks%></span><br/><br/>
+          <% else %> 
+             <span class="emp_lv_dt_tba">TO BE ACTIONED</span><br/><br/>
+          <% end %>
+<% if @leave.requester_emp_id != @emp.emp_id %>
+          <% if @leave.status == "Approved" || @leave.status == "Rejected"%>
+<%= form_for :leave, :url => {:action => 'update', :id =>@leave.id }  do |f| -%>
+	<label for="status">Re-Action:</label>
+          <%=f.select :status, options_for_select([['Approve','Approved'],['Reject','Rejected']]) %><br/><br/>
+<div class="submit">
+          <%= f.submit 'Re-Action', :confirm => 'Are you sure to change action', :class => 'leave_action_button' %>
+     </div>
+	<% end %>
+	<% end %>
+        
+      </div>
+   </fieldset>
+   </div>
+
+<% end %>
+
+<% end %>

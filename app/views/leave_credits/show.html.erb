@@ -1,0 +1,40 @@
+<% content_for(:page_title, "Leave Credits Details ") %>
+<% content_for :emp_sel do %>
+<div id="emp_qlc">
+  <h3> Leave credit Details </h3>
+<center>
+   <table id="rt_leavecredit">
+ <tbody>       
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>BeforeCredit</th>
+    <th>AfterCredit</th>
+     <th>Credit Type</th>
+  </tr>
+
+
+<% for i in 0..@c-1 %>
+<% if @e[i].emp_id != '0001' && @e[i].emp_id != '0002' %>
+  <tr>
+
+    <td><%= @e[i].emp_id%></td>
+    <td><%= Employee.where('emp_id=?', @e[i].emp_id).pluck(:first_name)[0] + Employee.where('emp_id=?', @e[i].emp_id).pluck(:last_name)[0] %></td>
+    <td><%= Leave.where('requester_emp_id=? and leave_type=? and status=? and created_at!=?',  @e[i].emp_id, "EL", 'Credit', @beforecredit).pluck(:no_of_days).compact.sum - Leave.where('requester_emp_id=? and leave_type=? and status=? and created_at!=?', @e[i].emp_id, "EL", 'Approved', @beforecredit).pluck(:no_of_days).compact.sum %></td>
+
+  <td><%= Leave.where('requester_emp_id=? and leave_type=? and status=?', @e[i].emp_id, "EL", 'Credit').pluck(:no_of_days).compact.sum -
+Leave.where('requester_emp_id=? and leave_type=? and status=?', @e[i].emp_id, "EL", 'Approved').pluck(:no_of_days).compact.sum
+ %></td>
+
+ <td><%=Leave.where('created_at=?', @beforecredit).pluck(:admin_comments).last
+%></td>
+</tr>
+<% end %>
+<% end %>
+ </tbody>
+</table>
+
+
+</div>
+<% end %>
+

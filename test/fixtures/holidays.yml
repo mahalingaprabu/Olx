@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  holiday_date: 2013-11-15
+  day: MyString
+  reason: MyString
+  type: 
+
+two:
+  holiday_date: 2013-11-15
+  day: MyString
+  reason: MyString
+  type: 

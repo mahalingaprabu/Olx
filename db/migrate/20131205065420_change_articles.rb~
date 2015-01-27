@@ -1,0 +1,9 @@
+class ChangeArticles < ActiveRecord::Migration
+  def up
+     t.rename :emp_id, :author_emp_id
+  end
+
+  def down
+     t.rename :author_emp_id, :emp_id
+  end
+end

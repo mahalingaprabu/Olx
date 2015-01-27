@@ -1,0 +1,22 @@
+<%= form_for :data, :url =>{:action => 'acreate'}, :html => {:class => ""} do |f| %>
+  <label for="employee_encashed_date">Seperation date</label>
+  <%= f.date_select :request_date, :default => Date.today, :order => [:day, :month, :year], :use_short_month => true %><br/><br/>
+
+  <label for="leave_type">Encashed EL</label>
+  <%=f.text_field :no_of_days, :size=>'15' %> <br/><br/>
+  <%=f.hidden_field :leave_type, :value => "EL"%>
+  <%=f.hidden_field :start_date, :value => Date.today%>
+  <%=f.hidden_field :end_date, :value => Date.today%>
+  <%=f.hidden_field :request_date, :value => Date.today%>
+  <%=f.hidden_field :admin_comments, :value => 'employee seperation'%>
+  <%=f.hidden_field :action_remarks, :value => ''%>
+  <%=f.hidden_field :status, :value => 'debit'%>
+
+
+<div class="submit">
+
+   <%= f.submit 'add seperation', :class => 'leave_button' %>
+</div>
+
+
+<% end %>

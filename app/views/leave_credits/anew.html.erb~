@@ -1,0 +1,25 @@
+<% content_for(:page_title, "Alloted Optional Holiday") %>
+<% content_for :emp_sel do %>
+<h3>New Leave Request</h3>
+<div id="emp_leave_request">
+<%= form_for :leave_oh, :url => acreate_leaves_path  do |f| %>
+            <label for="rt_allowed_oh">allowed <br>optional holidays </label>
+            <%= f.text_field :no_of_days %><br/><br/>
+            <label for="rt_year">Year for holiday </label>
+<%#= f.year_select Date.today, :start_date => Time.now.year, :end_date => Time.now.year - 95 %>
+<%= f.select(:start_date, 2000..Time.now.year) %>
+<%=f.hidden_field :start_date, :value => 'Credit' %> 
+<%=f.hidden_field :admin_remarks, :value => 'alloted optinal holiday' %> 
+
+     
+  <div class="buttons">
+     <%= f.submit 'submit', :class => 'new_holiday_button' %>
+  </div>
+
+<% end %>
+</div>
+<% end %>
+
+
+
+

@@ -1,0 +1,20 @@
+<% content_for :emp_sel do %>
+<%= form_for :article, :url => articles_path do |f| %>
+<div id="new_emp_blog">
+ <fieldset id="new_emp_article">
+ <% content_for(:page_title, "New Blog")%>
+<h3>New Blog</h3>
+  <label for="article_title">Title</label>
+  <%= f.text_field :title, :size=>'35',:maxlength =>'250', :class => "validate[required]" %><br/><br/>
+
+  <label for="article_body">Body</label>
+  <%= f.text_area :body, :cols=>50,:rows =>10, :class => "validate[required]" %><br/><br/>
+  
+<div class="buttons">
+	<input type="submit" name="commit" value="Publish" class="publish_button" tabindex="8"> 
+</div>
+
+</fieldset>
+</div>
+<% end %>
+<% end %>

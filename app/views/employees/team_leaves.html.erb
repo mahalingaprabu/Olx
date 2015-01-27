@@ -1,0 +1,22 @@
+<% content_for(:page_title, "My Leave History") %>
+<% content_for :emp_sel do %>
+<div id="my_leaves">
+  <h3> Team Leave History</h3>
+
+<div id="emp_search_history">
+<%= form_tag team_leaves_employee_path, :method => 'get' do  %>
+<% if @emp.emp_id == '0002'%>
+<%= select_tag :search, options_for_select(Employee.all.collect {|p| [p.first_name+" "+p.last_name]}.insert(0,"select all"), params[:search]), {:class => 'emp_lve_select'} %>
+<% else %>
+<%= select_tag :search, options_for_select(@employees.collect {|p| [p.first_name+" "+p.last_name]}.insert(0,"select all")), {:class => 'emp_lve_select'} %>
+<% end %>
+ <input type="submit" value="Search", class="search_button"> <br/><br/>
+<% end %>
+</div>
+
+<div id="my_leave_reqs">
+   <%=render "leave_requests"%>
+</div>
+ <%= will_paginate @leaves %>
+</div>
+<% end %>

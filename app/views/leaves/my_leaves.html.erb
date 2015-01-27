@@ -1,0 +1,10 @@
+<% content_for(:page_title, "My Leave History") %>
+<% content_for :emp_sel do %>
+<div id="my_leaves">
+  <h3>My Leave History</h3>
+<div id="my_leave_reqs">
+   <%=render "leave_requests"%>
+</div>
+ <%= will_paginate @leaves %>
+</div>
+<% end %>

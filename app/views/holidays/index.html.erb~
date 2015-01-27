@@ -1,0 +1,12 @@
+<% content_for(:page_title, "Holiday List") %>
+<% content_for :emp_sel do %>
+<div id="rt_hol">
+  <div align = "right">Today: <%= Time.now.strftime("%a, %d-%b-%Y %H:%M:%S") %>
+</div>
+  <h3>RT Holidays for <%=Date.today.year%></h3>
+    <%= render "holiday_master" %>
+ <%= will_paginate @leaves %>
+</div>
+<% end %>
+
+

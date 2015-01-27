@@ -1,0 +1,25 @@
+<% content_for(:page_title, "Blogs List") %>          
+<% content_for :emp_sel do %>
+<div id="emp_blogs_list">
+<h3>RapidThink Blogs</h3>
+   <table id="rt_blogs">
+       <tbody>
+          <tr>
+             <th>Title</th>
+             <th>Author</th>
+             <th>Published Date</th>
+         </tr>
+<% @articles.each do |art| %>
+        <tr>
+           <td><%=link_to art.title,article_path(art.id)%></td>
+           <td><%=Employee.find(art.employee_id).first_name%> <%=Employee.find(art.employee_id).last_name%></td>
+           <td><%=art.created_at.strftime('%d-%m-%y')%></td>
+        </tr>
+<% end %>
+   </tbody>
+ </table>
+<%=will_paginate @articles%>
+<% end %>
+
+
+

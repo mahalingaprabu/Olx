@@ -1,0 +1,18 @@
+<% unless flash[:errors].blank? %>
+ <div id="flash_error" class="notice error popup">
+   <h4>The following errors occured: </h4>
+       <ul class="error_messages">
+            <%= render :partial => 'application/flash_error' %>
+       </ul>
+ </div>
+<% end %>
+
+<% unless flash[:notice].blank? %>
+<div id="flash_notice" class="notice popup">
+     <ul class="notice_messages">
+          BLAH BLAH
+          <%= render :partial => 'application/flash_notice' %>
+     </ul>
+</div>
+<% end %>
+

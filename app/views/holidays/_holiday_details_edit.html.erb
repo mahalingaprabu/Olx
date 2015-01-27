@@ -1,0 +1,16 @@
+<%= form_for @holiday, :url => {:action => 'update', :id =>@holiday.id }  do |f| -%>
+  <fieldset id="updt_rt_holiday">
+     <%content_for(:page_title, "Edit RT Holiday")%>
+       <h3>Modify RapidThink Holiday</h3> 
+            <label for="rt_holiday_date">Holiday Date</label>
+            <%= f.date_select :holiday_date,:default => Date.today, :order => [:day, :month, :year], :use_short_month => true, :start_year => (Date.today.year - 10), :end_year => (Date.today.year + 10) %><br/><br/>
+            <label for="rt_holiday_reason">Holiday Reason</label>
+            <%= f.text_field :holiday_reason %><br/><br/>
+            <label for="rt_holiday_type">Type</label>
+            <%= f.select :holiday_type, options_for_select([["Holiday", "Holiday"], ["Optional Holiday", "Optional Holiday"]], @holiday.holiday_type) %><br/><br/>
+
+  <div class="buttons">
+     <%= f.submit 'Update Holiday', :class => 'updt_holiday_button' %>
+  </div>
+ </fieldset>
+<% end %>

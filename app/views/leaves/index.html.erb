@@ -1,0 +1,15 @@
+<% content_for(:page_title, "View Employees") -%>
+<% content_for :emp_sel do %>
+<div id="rt_emps">
+<% if @emp.is_admin? %>
+<h3>Leaves </h3>
+
+<%= render :partial => "leaves", :object => @emp %>
+<%= will_paginate @employees %>
+<% else %>
+<h3>My Team</h3>
+<%= render :partial => "leaves", :object => @emp %>
+<%= will_paginate @employees %>
+<% end %>
+</div>
+<% end %>

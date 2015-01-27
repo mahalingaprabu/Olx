@@ -1,0 +1,69 @@
+                                        /employees/get_emp_manager_name/:id(.:format)                  employees#get_emp_manager_name
+            employees_emp_delete        /employees/emp_delete(.:format)                                employees#emp_delete
+            login_authentication        /authentication/login(.:format)                                authentication#login
+           logout_authentication GET    /authentication/logout(.:format)                               authentication#logout
+     set_password_authentication        /authentication/set_password(.:format)                         authentication#set_password
+  forgot_password_authentication        /authentication/forgot_password(.:format)                      authentication#forgot_password
+   reset_password_authentication        /authentication/reset_password(.:format)                       authentication#reset_password
+                  authentication POST   /authentication(.:format)                                      authentication#create
+              new_authentication GET    /authentication/new(.:format)                                  authentication#new
+             edit_authentication GET    /authentication/edit(.:format)                                 authentication#edit
+                                 GET    /authentication(.:format)                                      authentication#show
+                                 PUT    /authentication(.:format)                                      authentication#update
+                                 DELETE /authentication(.:format)                                      authentication#destroy
+              destroy_id_holiday POST   /holidays/:id/destroy/id(.:format)                             holidays#destroy
+                        holidays GET    /holidays(.:format)                                            holidays#index
+                                 POST   /holidays(.:format)                                            holidays#create
+                     new_holiday GET    /holidays/new(.:format)                                        holidays#new
+                    edit_holiday GET    /holidays/:id/edit(.:format)                                   holidays#edit
+                         holiday GET    /holidays/:id(.:format)                                        holidays#show
+                                 PUT    /holidays/:id(.:format)                                        holidays#update
+                                 DELETE /holidays/:id(.:format)                                        holidays#destroy
+                        employee PUT    /employees/:id(.:format)                                       employees#update
+         leave_balances_employee GET    /employees/:id/leave_balances(.:format)                        employees#leave_balances
+     my_leave_approvals_employee GET    /employees/:id/my_leave_approvals(.:format)                    employees#my_leave_approvals
+              my_leaves_employee GET    /employees/:id/my_leaves(.:format)                             employees#my_leaves
+                my_team_employee GET    /employees/:id/my_team(.:format)                               employees#my_team
+             destroy_id_employee POST   /employees/:id/destroy/id(.:format)                            employees#destroy
+  request_details_employee_leafe GET    /employees/:employee_id/leaves/:id/request_details(.:format)   leaves#request_details
+     action_leave_employee_leafe POST   /employees/:employee_id/leaves/:id/action_leave(.:format)      leaves#action_leave
+quarterly_credits_employee_leafe GET    /employees/:employee_id/leaves/:id/quarterly_credits(.:format) leaves#quarterly_credits
+                 employee_leaves GET    /employees/:employee_id/leaves(.:format)                       leaves#index
+                                 POST   /employees/:employee_id/leaves(.:format)                       leaves#create
+              new_employee_leafe GET    /employees/:employee_id/leaves/new(.:format)                   leaves#new
+             edit_employee_leafe GET    /employees/:employee_id/leaves/:id/edit(.:format)              leaves#edit
+                  employee_leafe GET    /employees/:employee_id/leaves/:id(.:format)                   leaves#show
+                                 PUT    /employees/:employee_id/leaves/:id(.:format)                   leaves#update
+                                 DELETE /employees/:employee_id/leaves/:id(.:format)                   leaves#destroy
+                       employees GET    /employees(.:format)                                           employees#index
+                                 POST   /employees(.:format)                                           employees#create
+                    new_employee GET    /employees/new(.:format)                                       employees#new
+                   edit_employee GET    /employees/:id/edit(.:format)                                  employees#edit
+                                 GET    /employees/:id(.:format)                                       employees#show
+                                 PUT    /employees/:id(.:format)                                       employees#update
+                                 DELETE /employees/:id(.:format)                                       employees#destroy
+                article_comments GET    /articles/:article_id/comments(.:format)                       comments#index
+                                 POST   /articles/:article_id/comments(.:format)                       comments#create
+             new_article_comment GET    /articles/:article_id/comments/new(.:format)                   comments#new
+            edit_article_comment GET    /articles/:article_id/comments/:id/edit(.:format)              comments#edit
+                 article_comment GET    /articles/:article_id/comments/:id(.:format)                   comments#show
+                                 PUT    /articles/:article_id/comments/:id(.:format)                   comments#update
+                                 DELETE /articles/:article_id/comments/:id(.:format)                   comments#destroy
+                        articles GET    /articles(.:format)                                            articles#index
+                                 POST   /articles(.:format)                                            articles#create
+                     new_article GET    /articles/new(.:format)                                        articles#new
+                    edit_article GET    /articles/:id/edit(.:format)                                   articles#edit
+                         article GET    /articles/:id(.:format)                                        articles#show
+                                 PUT    /articles/:id(.:format)                                        articles#update
+                                 DELETE /articles/:id(.:format)                                        articles#destroy
+        quarterly_credits_leaves GET    /leaves/quarterly_credits(.:format)                            leave_credits#quarterly_credits
+                   rt_qlc_leaves POST   /leaves/rt_qlc(.:format)                                       leave_credits#rt_qlc
+           annual_credits_leaves GET    /leaves/annual_credits(.:format)                               leave_credits#annual_credits
+                   rt_alc_leaves POST   /leaves/rt_alc(.:format)                                       leave_credits#rt_alc
+                          leaves GET    /leaves(.:format)                                              leave_credits#index
+                                 POST   /leaves(.:format)                                              leave_credits#create
+                       new_leafe GET    /leaves/new(.:format)                                          leave_credits#new
+                      edit_leafe GET    /leaves/:id/edit(.:format)                                     leave_credits#edit
+                           leafe GET    /leaves/:id(.:format)                                          leave_credits#show
+                                 PUT    /leaves/:id(.:format)                                          leave_credits#update
+                                 DELETE /leaves/:id(.:format)                                          leave_credits#destroy

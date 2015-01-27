@@ -1,0 +1,34 @@
+<% content_for(:page_title, "My Leave Approvals") %>
+<% content_for :emp_sel do %>
+
+  <h3>Leave Requests For Approval</h3>
+
+<div id="emp_search_appr">
+
+<%= form_tag my_leave_approvals_employee_path, :method => 'get' do %>
+
+<%= select_tag :search, options_for_select(@employees.collect {|p| [p.first_name+" "+p.last_name]}.insert(0,"select all")), {:class => 'emp_lve_select'} %>
+
+<%#= select_tag :search_user, options_for_select(@users.collect{ |user| [user.name, user.id] }.insert(0,"Everyone")), :class => 'submittable'%>
+<%#= f.select(:priority, options_for_select({"Stat" => "1", "Urgent" => "2", "Regular" => "3", "Safety" => "4"}, @servicerequest.priority), :prompt => "Choose") %>
+
+    <%#= collection_select(:city, :country_id, @countries, :id, :country_name, {:prompt => false}) %> 
+  <%#= f.collection_select :provider_id, Provider.order(:name),:id,:name, include_blank: true %>
+ <input type="submit" value="Search", class="search_button"> <br/><br/>
+<% end %>
+</div>
+
+<div id="leave_reqs">
+   <% if @leaves.count > 0 %>
+      <%=render "leave_requests"%>
+   <% else %>
+      <span id="nlfma">There are currently no leave requests for your approval<span>
+   <% end %>
+</div>
+ <%= will_paginate @leaves %>
+<% end %>
+  
+
+
+<%#= select_tag :search, "employee_id", Employee.all.collect {|p| [ p.first_name, p.emp_id ] }, params[:search] %>
+    <%#= text_field_tag :search, params[:search], :class => 'search_input' %>

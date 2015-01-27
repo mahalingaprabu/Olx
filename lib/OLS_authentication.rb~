@@ -1,0 +1,7 @@
+module OLSAuthentication
+
+  def current_employee
+     # @current_employee=session[:user].employee
+  end
+
+end

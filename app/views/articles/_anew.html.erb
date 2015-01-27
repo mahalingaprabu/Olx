@@ -1,0 +1,4 @@
+ <%= form_for :data, :url =>{:action => 'acreate', :id => @article.id } do |i| %>
+&nbsp;&nbsp;&nbsp;&nbsp;<%= i.text_area :body, :cols => "25", :rows => "6", :limit => "250", :class => 'blog_comment_box' %>
+<%#= i.submit 'save' %>
+<% end %>

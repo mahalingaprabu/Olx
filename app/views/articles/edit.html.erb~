@@ -1,0 +1,25 @@
+<% content_for(:page_title, "Edit Blog") %>
+<% content_for :emp_sel do %>
+<h3>Edit Blog</h3>
+<div id="blog_dtls">
+<%=form_for @article, :url=>article_path(@article), :html => {:class=>'article_form'} do |f| %>
+<div id="edit_emp_blog">
+ <fieldset id="edit_emp_article">
+
+  <label for="article_title">Title</label>
+  <%= f.text_field :title, :size=>'65',:maxlength =>'250' %><br/><br/>
+
+  <label for="article_body">Body</label>
+  <%= f.text_area :body, :cols=>50,:rows =>20 %><br/><br/>
+  
+<div class="buttons">
+	<input type="submit" name="commit" value="Update Blog" class="publish_button" tabindex="8"> 
+</div>
+
+</fieldset>
+</div>
+<% end %>
+</div>
+<% end %>
+
+

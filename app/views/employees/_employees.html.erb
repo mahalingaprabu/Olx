@@ -1,0 +1,54 @@
+<% if employees.is_admin? %>
+<table id="rt_employees">
+    <tbody>
+         <tr>
+             <th>Emp id</th>
+             <th>Emp Name</th>
+             <th>DOB</th>
+             <th>Date of Joining</th>
+             <th>Designation</th>
+             <th>Manager</th>
+         </tr>
+     <% @employees.each do |emp| %>
+         <tr id="emp_<%=emp.emp_id%>">
+           <td><%= link_to emp.emp_id, edit_employee_path(emp) %></td>
+           <td><%=emp.first_name%></td>
+           <td><%=emp.dob.strftime("%d-%b")%></td>
+           <td><%=emp.doj.strftime("%d-%b-%Y")%></td>
+           <td><%=emp.designation%></td>
+           <td><%=emp.manager_name %></td>
+        </tr>
+     <% end %>
+   </tbody>
+</table>
+
+<% else %>
+
+<table id="rt_employees">
+    <tbody>
+         <tr>
+             <th>Emp id</th>
+            <th>Emp Name</th>
+             <th>DOB</th>
+             <th>Date of Joining</th>
+             <th>Designation</th>
+             <th>Manager</th>
+         </tr>
+     <% @employees.each do |emp| %>
+         <tr id="emp_<%=emp.emp_id%>">
+           <td><%=link_to emp.emp_id, employee_path(emp)%></td>
+            <td><%=emp.first_name%></td>
+           <td><%=emp.dob.strftime("%d-%b")%></td>
+           <td><%=emp.doj.strftime("%d-%b-%Y")%></td>
+           <td><%=emp.designation%></td>
+           <td><%=emp.manager_name %></td>
+        </tr>
+     <% end %>
+   </tbody>
+</table>
+
+<% end %>
+
+
+            
+ 

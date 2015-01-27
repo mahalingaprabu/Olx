@@ -1,0 +1,14 @@
+
+<%= form_for :employee, :url => {:action => 'acreate'}, :html => {:class => ""} do |f| -%>
+  <label for="employee_encashed_date">Separation date</label>
+  <%= f.date_select :seperation_date, :default => Date.today, :order => [:day, :month, :year], :use_short_month => true %><br/><br/>
+
+  <label for="leave_type">Encashed EL</label>
+  <%=f.text_field :encashed_days, :size=>'15' %> <br/><br/>
+
+
+<div class="submit">
+   <%= f.submit 'Emp separation', :confirm => 'Are you sure to separate this employee ?',  :class => 'leave_button' %>
+</div>
+<% end %>
+

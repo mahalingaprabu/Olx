@@ -1,0 +1,6 @@
+<% content_for(:page_title, "Create a new employee") %>
+<% content_for :emp_sel do %>
+<div id="emp_leaves">
+<%= render 'holiday_details_edit' %>
+</div><% end %>
+

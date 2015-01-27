@@ -1,0 +1,83 @@
+<% content_for(:page_title, "Employee details") %>
+<% content_for :emp_sel do %>
+<div id="emp_dtls">
+<fieldset id="emp_details">
+
+<div id="pers">
+<h4>Personal Details</h4>
+
+<div id="emp_dtl_left_col">
+  <label for="emp_full_name">Name:</label>								
+  <span><%=@employee.first_name.capitalize%> <%=@employee.last_name.capitalize%></span><br/><br/>
+  <label for="gender">Gender:</label>
+  <span><%=@employee.gender%></span><br/><br/>
+  <label for="dob">Date of birth:</label>
+  <span><%=@employee.dob.strftime("%d-%b-%Y")%></span><br/><br/>
+  <label for="age">Age at joining:</label>
+  <span><%=@employee.age%></span><br/><br/>
+  <label for="pan_no">PAN:</label>
+  <span><%=@employee.pan_no%></span><br/><br/>
+</div>
+
+<div id="emp_dtl_right_col">
+  <label for="local_addr">Local Address:</label>								
+  <div id="la"><%=@employee.local_addr%></div><br/><br/></br><br><br><br>
+  <label for="perm_addr">Permanent Address:</label>
+  <div id="pa"><%=@employee.perm_addr%></div><br/><br/></br><br><br><br>
+  <label for="mob_no">Mobile No:</label>
+  <span><%=@employee.mob_no%></span><br/><br/>
+  <label for="age">Phone No:</label>
+  <span><%=@employee.phone_no%></span><br/><br/>
+  <label for="pers_email">Personal Email:</label>
+  <span><%=@employee.pers_email_id%></span><br/><br/>
+</div>
+</div>
+
+<div id="prof">
+<h4>Professional Details</h4>
+<div id="emp_dtl_single_col">
+<label for="emp_id">Emp id:</label>
+<span><%=@employee.emp_id%></span><br/><br/>
+<label for="emp_designation">Designation:</label>
+<span><%=@employee.designation%></span><br/><br/>
+<label for="emp_doj">Date of joining:</label>
+<span><%=@employee.doj.strftime("%d-%b-%Y")%></span><br/><br/>
+<label for="emp_manager_name">Manager:</label>
+<span><%=@employee.manager_name%></span><br/><br/>
+<label for="emp_manager_emp_id">Manager Emp id:</label>
+<span><%=@employee.manager_emp_id%></span><br/><br/>
+<label for="emp_roles">Roles:</label>
+<% @employee.roles.each do |role| %>
+<span><%=Role::Role.find(role.id).key%>,</span>
+<% end %><br/><br/>
+<label for="emp_off_email">RapidThink Email:</label>
+<span><%=@employee.off_email_id%></span><br/><br/>
+</div>
+</div>	
+
+<div id="ilc">
+<h4>Joining Leave Credits</h4>
+<div id="emp_dtl_single_col">
+<label for="CL">Casual Leave:</label>
+<span><%= @employee.leaves.where("leave_type=? and action_remarks=?",'CL','Initial Credit').sum(:no_of_days) %></span><br/><br/>
+<label for="SL">Sick Leave:</label>
+<span><%= @employee.leaves.where("leave_type=? and action_remarks=?",'SL','Initial Credit').sum(:no_of_days) %></span><br/><br/>
+<label for="EL">Earned Leave:</label>
+<span><%= @employee.leaves.where("leave_type=? and action_remarks=?",'EL','Initial Credit').sum(:no_of_days) %></span><br/><br/>
+</div>
+</div>
+
+<div id="ilc">
+<h4>Current Leave Status</h4>
+<div id="emp_dtl_single_col">
+<label for="CL">Casual Leave:</label>
+<span><%=Leave.where("leave_type=? and status=? and requester_emp_id=?",'CL','Credit',@employee.emp_id).sum(:no_of_days)-Leave.where("leave_type=? and status=? and requester_emp_id=?",'CL','Approved',@employee.emp_id).sum(:no_of_days) %></span><br/><br/>
+<label for="SL">Sick Leave:</label>
+<span><%= Leave.where("leave_type=? and status=? and requester_emp_id=?",'SL','Credit',@employee.emp_id).sum(:no_of_days)-Leave.where("leave_type=? and status=? and requester_emp_id=?",'SL','Approved',@employee.emp_id).sum(:no_of_days) %></span><br/><br/>
+<label for="EL">Earned Leave:</label>
+<span><%= Leave.where("leave_type=? and status=? and requester_emp_id=?",'EL','Credit',@employee.emp_id).sum(:no_of_days)-Leave.where("leave_type=? and status=? and requester_emp_id=?",'EL','Approved',@employee.emp_id).sum(:no_of_days) %></span><br/><br/>
+</div>
+</div>
+
+</div>
+<% end %>

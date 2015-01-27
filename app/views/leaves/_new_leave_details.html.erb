@@ -1,0 +1,29 @@
+
+<%= form_for :leave, :url => employee_leaves_path  do |f| %>
+<fieldset id="leave_req">
+<label for="leave_start_date">Leave Start Date </label>
+<%= f.date_select :start_date, :default => Date.today, :order => [:day, :month, :year], :use_short_month => true, :start_year => (Date.today.year), :end_year => (Date.today.year + 1) %><br/><br/>
+
+<label for="leave_end_date", id = "leave_end_label">Leave End Date</label>
+<%= f.date_select :end_date,  :default => Date.today, :order => [:day, :month, :year], :use_short_month => true, :start_year => (Date.today.year), :end_year => (Date.today.year + 1), :html => {:class => "leave_end"}  %><br/><br/>
+
+   <label for="same_as_local_addr">Leave as one day</label>
+  <input id="copy_date" name="copy_date" type="checkbox" value="0"/><br><br/>
+
+<label for="leave_type">Leave Type</label>
+<%= f.select :leave_type, options_for_select([["Sick Leave", "SL"], ["Casual Leave", "CL"],["Earned Leave", "EL"], ["Optional Holiday", "OH"]]) %><br/><br/>
+
+<label for="request_remarks">Request Remarks</label>
+<center><%= f.text_area :request_remarks, :cols => "50", :rows => "6" %><br/><br/></center>
+
+<%=f.hidden_field :status, :value => 'New' %> 
+<%=f.hidden_field :request_date, :value => Date.today%>
+
+
+<div class="submit">
+   <%= f.submit 'Request Leave', :class => 'leave_button' %>
+</div>
+</fieldset>
+
+<% end %>
+

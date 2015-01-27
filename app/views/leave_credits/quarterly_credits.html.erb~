@@ -1,0 +1,10 @@
+<% content_for(:page_title, "Quarterly RT Leave Credits ") %>
+<% content_for :emp_sel do %>
+<div id="emp_qlc">
+  <h3>Credit Quarterly Leave </h3>
+<div id="empl_alc">
+<center>Last Quarterly leave credited on <br> <%= $lastQCD.strftime("%d-%B-%Y") %></center>
+   <%= render 'quarterlyleavecredit_details' %>
+</div>
+<% end %>
+

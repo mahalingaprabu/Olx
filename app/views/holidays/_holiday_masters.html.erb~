@@ -1,0 +1,23 @@
+<table id="rt_holiday" border ='1'>
+    <tbody>       
+  <tr>
+    <th>Date</th>
+    <th>Day</th>
+    <th>Reason</th>
+    <th>Holiday</th>
+     <th>Delete</th>
+  </tr>
+<% @holidays.each do |hol| %>
+
+  <tr>
+    <td><%= hol.holiday_date.strftime("%d-%b-%Y") %></td>
+    <td><%= hol.holiday_day %></td>
+    <td><%= link_to hol.holiday_reason, :controller => 'holiday_masters', :action => 'edit', :id => holiday_master.id %></td>
+    <td><%= hol.holiday_type %></td>
+ <td><%= button_to '×', {:controller => 'holiday_masters', :action => 'destroy', :id => holiday_master.id}, :confirm => 'Are you sure to delete?'%></td>
+</tr>
+<% end %>
+   </tbody>
+</table>
+
+

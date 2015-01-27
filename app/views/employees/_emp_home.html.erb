@@ -1,0 +1,52 @@
+<% content_for(:page_heading, "Employee Home") -%>
+<% content_for :emp_home do -%>
+<div id="useful_links">
+  <ul id="my_leaves">My Leaves
+  	<%= content_tag('li',link_to("Balances",leave_balances_employee_path(@emp.id)), :class => 'contentblock')%>
+	<%= content_tag('li',link_to("History",my_leaves_employee_path(@emp.id)), :class => 'contentblock')%>
+	<%= content_tag('li',link_to("New Request",new_employee_leafe_path(@emp.id)), :class => 'contentblock')%>
+	<% if @emp.is_leave_approver? %>
+	    <%= content_tag('li',link_to("Approvals",my_leave_approvals_employee_path(@emp.emp_id)), :class => 'contentblock')%>
+	    <%= content_tag('li',link_to("Team History ",team_leaves_employee_path(@emp.emp_id)), :class => 'contentblock')%>
+	<% end %>
+  </ul>
+  <ul id="my_hols">Holidays <%=Date.today.year%>
+        <%= content_tag('li',link_to("Holiday List",holidays_path), :class => 'contentblock')%>
+        <% if @emp.is_admin?%>
+           <%= content_tag('li',link_to("New Holiday",new_holiday_path), :class => 'contentblock') if @emp.is_admin? %>
+           <%= content_tag('li',link_to("Allowed OH", ohindex_leaves_path), :class => 'contentblock') if @emp.is_admin? %>
+           <%#= content_tag('li',link_to("New Holiday"), :class => 'contentblock') if @emp.is_admin? %>
+        <% end %>
+  </ul>
+ 
+  <% if @emp.is_admin?%>
+   <ul id="leave_credits">Leave Credits
+     <%= content_tag('li',link_to("Quarterly",quarterly_credits_leaves_path))%>
+     <%= content_tag('li',link_to("Annual",annual_credits_leaves_path))%>
+   </ul>
+  <% end %>
+ 
+<% if (@emp.is_leave_approver? or @emp.is_manager? or @emp.is_admin?)  %>
+<ul id="emp_dtl_links">RT Employees
+   <% if @emp.is_admin?%>
+    <%= content_tag('li',link_to("Add ",new_employee_path))%>
+    <%= content_tag('li',link_to("View ",employees_emp_leave_status_path))%>
+    <%= content_tag('li',link_to("Separation", employees_employee_separation_path))%>
+  <% end %>
+<% if @emp.is_admin?%>
+    <%= content_tag('li',link_to("Modify ",employees_path))%>
+
+<% else %>
+    <%= content_tag('li',link_to("View ",employees_path))%>
+<% end %>
+</ul>
+<% end %>
+
+<ul id="emp_blogs_links">Blogs
+    <%= content_tag('li',link_to("New Blog",new_article_path))%>
+    <%= content_tag('li',link_to("RT Blogs",articles_path))%>
+</ul>
+</div>
+<% end %>
+
+<%= render :file => 'layouts/_emp_hub' %>

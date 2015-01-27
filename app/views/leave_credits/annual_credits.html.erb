@@ -1,0 +1,8 @@
+<% content_for(:page_title, "Annual RT Leave Credits") %>
+<% content_for :emp_sel do %>
+<div id="emp_alc">
+  <h3>Credit Annual Leave </h3>
+<div id="empl_alc">
+<center>Last Annual leave credited Year is <br> <%= $lastACD %></center></div>
+   <%= render 'annualleavecredit_details' %>
+</div><% end %>

@@ -1,0 +1,80 @@
+<center>
+<% if @emp.emp_id == '0002'|| @emp.emp_id == '0001' %>
+<table id="rt_holidays">
+ <tbody>       
+  <tr>
+    <th>Date</th>
+    <th>Day</th>
+    <th>Reason</th>
+    <th>Type</th>
+     <th>Delete</th>
+  </tr>
+
+
+<% $s.each do |hol| %>
+  <tr>
+    <td><%= hol.holiday_date.strftime("%d-%b-%y") %></td>
+    <td><%= hol.holiday_day %></td>
+    <td><%= link_to hol.holiday_reason, :controller => 'holidays', :action => 'edit', :id => hol.id %></td>
+    <td><%= hol.holiday_type %></td>
+ <td><%= button_to '×', {:controller => 'holidays', :action => 'destroy', :id => hol.id}, :confirm => 'Are you sure you want to delete this holiday?'%></td>
+</tr>
+<% end %>
+ </tbody>
+</table>
+
+
+<% elsif @emp.is_admin? %>
+
+<table id="rt_holidays">
+ <tbody>       
+  <tr>
+    <th>Date</th>
+    <th>Day</th>
+    <th>Reason</th>
+    <th>Type</th>
+     <th>Delete</th>
+  </tr>
+
+
+<% @holidays.each do |hol| %>
+<% if hol.holiday_date.year == Date.today.year %>
+  <tr>
+    <td><%= hol.holiday_date.strftime("%d-%b-%y") %></td>
+    <td><%= hol.holiday_day %></td>
+    <td><%= link_to hol.holiday_reason, :controller => 'holidays', :action => 'edit', :id => hol.id %></td>
+    <td><%= hol.holiday_type %></td>
+ <td><%= button_to '×', {:controller => 'holidays', :action => 'destroy', :id => hol.id}, :confirm => 'Are you sure you want to delete this holiday?'%></td>
+</tr>
+<% end %>
+<% end %>
+ </tbody>
+</table>
+
+<% else %>
+
+<table id="rt_holidays">
+ <tbody>       
+  <tr>
+    <th>Date</th>
+    <th>Day</th>
+    <th>Reason</th>
+    <th>Type</th>
+  </tr>
+
+
+<% @holidays.each do |hol| %>
+  <tr>
+<% if hol.holiday_date.year == Date.today.year %>
+    <td><%= hol.holiday_date.strftime("%d-%b-%y") %></td>
+    <td><%= hol.holiday_day %></td>
+    <td><%= hol.holiday_reason%></td>
+    <td><%= hol.holiday_type %></td>
+</tr>
+<% end %>
+<% end %>
+ </tbody>
+</table>
+<% end %>
+
+

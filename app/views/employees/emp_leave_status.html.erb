@@ -1,0 +1,37 @@
+<% content_for(:page_title, "Delete the employee") %>
+<% content_for :emp_sel do %>
+
+<div id="emp_det">
+<%=render "emp_leave_status_employee" %>
+</div>
+
+<table id="rt_employees">
+    <tbody>
+         <tr>
+             <th>Emp id</th>
+             <th>Emp Name</th>
+             <th>DOB</th>
+             <th>Date of Joining</th>
+             <th>Designation</th>
+             <th>Manager</th>
+
+         </tr>
+     <% @employees.each do |emp| %>
+           <td><%= link_to emp.emp_id, :action => 'show', :id => emp.id %></td>
+
+           <td><%=emp.first_name%></td>
+           <td><%=emp.dob.strftime("%d-%b")%></td>
+           <td><%=emp.doj.strftime("%d-%b-%Y")%></td>
+           <td><%=emp.designation%></td>
+           <td><%=emp.manager_name%></td>
+
+        </tr>
+     <% end %>
+   </tbody>
+</table>
+<%= will_paginate @employees %>
+<% end %>
+
+
+    
+

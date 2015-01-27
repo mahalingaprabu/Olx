@@ -1,0 +1,386 @@
+// Place all the styles related to the Employees controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#leave_links #emp_leave_links{display:inline; list-style:none; float:left; margin-left:-15px; margin-top: 30px;margin-bottom:15px;}
+#outer{border:1px solid yellow; overflow:auto; display:table-row;}
+.left_col{border:1px solid magenta; display:table-cell; vertical-align:top; width:210px;}
+.right_col{border:1px solid cyan; display:table-cell; vertical-align:top; width:710px;}
+#menu_sel{border:1px solid #BDE88F; margin:5px; overflow:hidden;}
+#menu_sel #emp_det .emp_nav li{
+    list-style: none; 
+    float: left; 
+    position: relative; 
+    top: 1px; 
+    margin: 0 5px 0 0; 
+    padding: 5px 5px 5px 5px;
+    white-space: nowrap; 
+    border: 2px solid #ABACB0;
+    border-radius:5px;
+}
+
+#menu_sel #emp_det .emp_nav li a{
+   text-decoration:none;
+   font-size:.93em;
+   font-weight:bold;
+   padding:8px;
+   color: #566080;
+}
+
+
+#my_leaves, #my_hols, #leave_credits , #emp_dtl_links, #emp_blogs_links{
+cursor:pointer;
+}
+
+
+#my_leaves li, #my_hols li, #leave_credits li, #emp_dtl_links li, #emp_blogs_links li{
+padding-left:20px;
+list-style:none;
+}
+
+#my_leaves li a, #my_hols li a, #leave_credits li a, #emp_dtl_links li a, #emp_blogs_links li a{
+cursor: pointer;
+text-decoration: none;
+}
+
+#my_leaves li a:hover, #my_hols li a:hover, #leave_credits li a:hover, #emp_dtl_links li a:hover, #emp_blogs_links li a:hover{
+text-decoration: underline;
+}
+
+#emp_leaves h4{text-align:center;}
+#emp_det_table{margin-top:30px;border-collapse:collapse;border: 1px solid black;}
+#emp_det_table{margin:5% 45% 5% 18%; width:65%;}
+#emp_det_table th{height:30px;background-color:#E7EBF7;}
+#emp_det_table td{height:20px;text-align:left;padding:8px; font-size:.92em; }
+.disclaimer{font-size:.9em;font-weight:bold; margin-left:7%; margin-bottom:10px;}
+.disclaimer span{text-decoration:underline;}
+
+#emp_det h4{text-align:center;margin-bottom:20px;}
+#emp_det fieldset{border:1px solid #9B9DA3; border-radius:5px;margin:5% 5% 5% 5%;}
+#emp_det label{font-size:.9em; width:210px;margin-left:15%;margin-bottom:20px;}
+#emp_det input[type="text"]{height:12px;font-size:.8em; width: 120px;}
+#emp_det #employee_dob_3i{width:44px;font-size:.9em}
+#emp_det #employee_dob_2i{width:50px;font-size:.9em}
+#emp_det #employee_dob_1i{width:55px;font-size:.9em}
+
+#emp_det #employee_doj_3i{width:44px;font-size:.9em}
+#emp_det #employee_doj_2i{width:50px;font-size:.9em}
+#emp_det #employee_doj_1i{width:55px;font-size:.9em}
+#emp_det textarea{width:150px; height:80px; scroll:yes;font-size:.98em;margin-left:2px;}
+#emp_det #employee_roles{width:120px; height:60px; font-size:.8em;}
+
+
+#emp_det input[type="radio"]{width:10px; height:10px;float:left; clear:none;}
+
+h3{margin-left:25px;font-size:1.2em;}
+
+#emp_det #emp_gender_male{
+display:inline;
+position:relative;
+font-size:.8em;
+width:30px;
+margin-left:2px;
+}
+
+#emp_det #emp_gender_female{
+display:inline;
+position:relative;
+font-size:.8em;
+width:38px;
+margin-left:2px;
+clear:right;
+}
+
+#emp_dtl_left_col{
+float:left;
+width:45%;
+position:relative;
+margin-top:5px;
+padding:5px 20px 10px 5px;
+left:5px;
+}
+
+#emp_dtl_left_col label{
+font-size:.9em;
+width:90px;
+}
+
+#emp_dtl_right_col{
+float:right;
+width:45%;
+position:relative;
+top:5px;
+padding-left:20px;
+border-left:1px solid black;
+}
+
+#emp_dtls h4{
+margin-left:15px;
+}
+
+
+#emp_dtl_right_col label{
+font-size:.9em;
+width:130px;
+float:left;
+margin-left:1px;
+}
+
+#pa, #la{
+width:110px;
+height:auto;
+float:left;
+font-size:.88em;
+position:relative;
+display:inline-block;
+clear:right;
+padding-bottom:10px;
+}
+
+#emp_dtls span{
+font-size:.9em;
+}
+
+#pers{
+padding-bottom:25px;
+border-bottom:2px grey dashed;
+overflow:hidden;
+}
+
+
+#emp_dtl_single_col{
+float:left;
+width:100%;
+position:relative;
+margin-top:5px;
+padding:5px 20px 10px 5px;
+left:5px;
+}
+
+#emp_dtl_single_col label{
+font-size:.9em;
+width:230px;
+float:left;
+margin-left:1px;
+}
+
+
+#prof{
+padding-bottom:20px;
+border-bottom:2px grey dashed;
+overflow:hidden;
+}
+
+#ilc{
+padding-bottom:20px;
+border-bottom:2px grey dashed;
+overflow:hidden;
+}
+
+#rt_emps h4{
+margin-left:15px;
+}
+
+#rt_employees{
+margin-left:15px;
+width:95%;
+border: 1px solid black;
+}
+
+#lve_rq{
+margin-left:15px;
+border: 1px solid black;
+width: 95%;
+//margin-left:25%;
+}
+
+#lve_rq th, #lve_rq td{
+padding:5px 5px 5px 5px;
+}
+
+#rt_employees td, #lve_rq td{
+color:black;
+font-size:.9em;
+height:30px;
+text-align:center;
+}
+
+#rt_employees th{
+background-color:#23408A;
+color:#ffffff;
+font-size:.94em;
+height:30px;
+text-align:center;
+padding-top:5px;
+padding-bottom:4px;
+}
+
+#lve_rq th{
+background-color:#23408A;
+color:#ffffff;
+font-size:.94em;
+height:30px;
+text-align:center;
+padding-top:5px;
+padding-bottom:4px;
+}
+
+
+#rt_employees tr:nth-child(even), #lve_rq tr:nth-child(even)
+{
+color:#000000;
+background-color:#F0F4FD;
+}
+
+#emp_search{
+width:300px;
+margin-left:20%;
+padding:20px 10px 20px 10px;
+margin-bottom:10px;
+}
+
+#emp_search input[type="text"]{
+width:150px;
+height:20px;
+margin-left:20%;
+}
+
+#emp_search input[type="submit"]{
+width:60px;
+height:30px;
+margin-left:15px;
+}
+
+#logout{
+float:right;
+margin-right:10px;
+}
+
+#welcome{
+float:left;
+margin-left:10px;
+}
+
+#reset{
+margin-left:270px;
+}
+
+#employee_leaves_attributes_0_leave_type{
+float:left;
+clear:left;
+margin-left:5%;
+margin-right:30px;
+height:25px;
+}
+
+#employee_leaves_attributes_1_leave_type{
+float:left;
+clear:left;
+margin-left:5%;
+margin-right:30px;
+height:25px;
+}
+
+#employee_leaves_attributes_2_leave_type{
+float:left;
+clear:left;
+margin-left:5%;
+margin-right:30px;
+height:25px;
+}
+
+
+#employee_leaves_attributes_3_leave_type{
+float:left;
+clear:left;
+margin-left:5%;
+margin-right:30px;
+height:25px;
+}
+
+
+#employee_leaves_attributes_0_no_of_days{
+float:left;
+margin-left:20px;
+margin-right:20px;
+padding-bottom:5px;
+}
+
+
+#employee_leaves_attributes_1_no_of_days{
+float:left;
+margin-left:20px;
+margin-right:20px;
+padding-bottom:5px;
+}
+
+#employee_leaves_attributes_2_no_of_days{
+float:left;
+margin-left:20px;
+margin-right:20px;
+padding-bottom:5px;
+}
+
+#employee_leaves_attributes_3_no_of_days{
+float:left;
+margin-left:20px;
+margin-right:20px;
+padding-bottom:5px;
+}
+
+
+
+
+#admin_comments{
+float:left;
+width:150px;
+height:20px;
+margin-left:30px;
+}
+
+#employee_leave_admin_comments{
+float:left;
+clear:right;
+height:80px;
+padding:3px 3px 3px 3px;
+}
+
+.search_input{
+float:left;
+clear:right;
+margin-left:30%;
+margin-right:10%;
+}
+
+.search_button{
+background-color:#fceabb;
+border-radius:4px;
+height:45px;
+background: -moz-linear-gradient(top, #fceabb 0%, #fccd4d 50%, #f8b500 51%, #fbdf93 100%); /* firefox */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fceabb), color-stop(50%,#fccd4d), color-stop(51%,#f8b500), color-stop(100%,#fbdf93));
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=0 );
+font-weight: bold; display:block; padding: 5px 5px; color: #FFF; text-shadow: #333 1px 1px 5px; text-decoration:none;
+-moz-box-shadow: 0px 0px 5px #333;
+-webkit-box-shadow: 0px 0px 5px #333;
+}
+
+#nlfma{
+margin-left:25px;
+font-size:.94em;
+font-weight:bold;
+}
+
+.emp_lve_select{
+width:200px;
+float:left;
+margin-left:95%;
+padding:10px 5px 10px 5px;
+margin-bottom:10px;
+margin-right:10%;
+clear:left;
+}
+
+
+
+
+
+

@@ -1,0 +1,45 @@
+<% content_for(:page_title, "View Employees") -%>
+<% content_for :emp_sel do %>
+<div id="rt_emps">
+<div id="emp_leave_request">
+<%= form_for :leave_oh, :url => ohcreate_leaves_path  do |f| -%>
+
+     <%content_for(:page_title, "New Holiday")%>
+       <h3>RapidThink allowed Optional Holiday</h3> 
+            <label for="rt_holiday_date">Start Date</label>
+  <%= f.date_select :start_date,:default => Date.today,:order => [:day, :month, :year], :use_short_month => true, :start_year => (Date.today.year-20), :end_year => (Date.today.year + 10) %><br/><br/>
+            <label for="rt_holiday_date">End Date</label>
+  <%= f.date_select :end_date,:default => Date.today,:order => [:day, :month, :year], :use_short_month => true, :start_year => (Date.today.year-10), :end_year => (Date.today.year + 10) %><br/><br/>
+          <label for="rt_holiday_reason">Allowed OH days</label>
+            <%= f.text_field :no_of_days, :size => 12 %>
+
+<%=f.hidden_field :status, :value => 'Credit' %> 
+<%=f.hidden_field :leave_type, :value => 'OH' %> 
+<%=f.hidden_field :request_remarks, :value => 'O/H credit' %> 
+<%=f.hidden_field :admin_comments, :value => 'allowed optional holiday' %> 
+
+     
+  <div class="buttons">
+     <%= f.submit 'submit', :class => 'new_holiday_button' %>
+  </div>
+<% end %>
+</div>
+
+<table id="rt_employees">
+    <tbody>
+         <tr>
+             <th>Start Date</th>
+             <th>End Date</th>
+             <th>No of days</th>
+         </tr>
+     <% @allowedohs.each do |oh| %>
+         <tr>
+           <td><%= link_to oh.start_date.strftime("%d-%b-%Y"), :action => 'ohedit', :id => oh.id %></td>
+           <td><%=oh.end_date.strftime("%d-%b-%Y") %></td>
+           <td><%=oh.no_of_days %></td>
+        </tr>
+     <% end %>
+   </tbody>
+</table><br>
+ <%= will_paginate @allowedohs %><br>
+</div><% end %>

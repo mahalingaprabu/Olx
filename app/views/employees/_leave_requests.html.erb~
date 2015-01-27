@@ -1,0 +1,98 @@
+<center>
+<%if controller.action_name=="my_leave_approvals"%>
+
+<div align = "center">
+<table id="lve_rq">
+   <tbody>
+       <tr>
+          <th>Leave Dates</th>
+          <th>Request Date</th>
+          <th>Requester</th>
+          <th>Days</th>
+          <th>Status</th>
+       </tr>
+       <% @leaves.each do |leave| %>
+       <tr>
+          <% if leave.no_of_days == 1%>
+          <td><%=link_to(leave.start_date.strftime("%d-%b-%Y"), request_details_employee_leafe_path(@uid,leave.id))%></td>
+	<% else %>
+          <td><%=link_to(leave.start_date.strftime("%d-%b")+" to "+leave.end_date.strftime("%d-%b"), request_details_employee_leafe_path(@uid,leave.id))%></td>
+       <% end %>
+          <td><%=leave.request_date.strftime('%d-%b-%Y')%></td>
+          <td><%=Employee.find_by_emp_id(leave.requester_emp_id).first_name%><%=Employee.find_by_emp_id(leave.requester_emp_id).last_name%></td>
+          <td><%=leave.no_of_days%></td>
+          <td><%=leave.status%></td>
+       </tr>
+       <% end %>
+   </tbody>
+</table></div>
+<% elsif controller.action_name=="my_leaves"%>
+
+<table id="lve_rq">
+   <tbody>
+       <tr>
+          <th>Leave Dates</th>
+          <th>Request Date</th>
+          <th>Approver</th>
+          <th>Status</th>
+          <th>Action</th>
+       </tr>
+       <% @leaves.each do |leave| %>
+       <tr>
+   <% if leave.no_of_days == 1%>
+          <td><%=link_to(leave.start_date.strftime("%d-%b-%Y"), request_details_employee_leafe_path(@uid,leave.id))%></td>
+	<% else %>
+          <td><%=link_to(leave.start_date.strftime("%d-%b")+" to "+leave.end_date.strftime("%d-%b"), request_details_employee_leafe_path(@uid,leave.id))%></td>
+       <% end %>
+          <td><%=leave.request_date.strftime('%d-%b-%Y')%></td>
+          <td><%=((Employee.find_by_emp_id(leave.requester_emp_id)).find_leave_approver).first_name%> <%=((Employee.find_by_emp_id(leave.requester_emp_id)).find_leave_approver).last_name%></td>
+            <% if leave.status == "New" %>
+               <% lst="Applied" %>
+            <% else lst=leave.status %>
+            <% end %>
+          <td><%=lst%></td>
+	 <% if leave.status == "New" %>
+          <td><%= link_to 'withdraw', edit_employee_leafe_path(@uid,leave.id) %></td>
+            <% else lst=leave.status %>
+          <td><%= '' %></td>
+       <% end %>
+       </tr>
+       <% end %>
+   </tbody>
+</table>
+
+
+<% elsif controller.action_name=="team_leaves"%>
+<table id="lve_rq">
+   <tbody>
+       <tr>
+          <th>Leave Dates</th>
+          <th>Request Date</th>
+          <th>Requester</th>
+          <th>Days</th>
+          <th>Status</th>
+       </tr>
+       <% @leaves.each do |leave| %>
+       <tr>
+       <% if leave.admin_comments != 'Employee Separated' %>
+  <% if leave.no_of_days == 1%>
+          <td><%=link_to(leave.start_date.strftime("%d-%b-%Y"), request_details_employee_leafe_path(@uid,leave.id))%></td>
+	<% else %>
+          <td><%=link_to(leave.start_date.strftime("%d-%b")+" to "+leave.end_date.strftime("%d-%b"), request_details_employee_leafe_path(@uid,leave.id))%></td>
+       <% end %>
+          <td><%=leave.request_date.strftime("%d-%b-%Y") %></td>
+<td><%=Employee.find_by_emp_id(leave.requester_emp_id).first_name%><%=Employee.find_by_emp_id(leave.requester_emp_id).last_name%></td>
+          <td><%=leave.no_of_days%></td>
+            <% if leave.status == "New" %>
+               <% lst="Applied" %>
+            <% else lst=leave.status %>
+            <% end %>
+          <td><%=lst%></td>
+	<% end %>
+       </tr>
+
+       <% end %>
+   </tbody>
+</table>
+
+<% end %>     

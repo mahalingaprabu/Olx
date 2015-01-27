@@ -1,0 +1,12 @@
+<%= form_for :qlc, :url => {:action => 'rt_qlc'}, :emp_id => @emp_id do |f| %>
+    <%= f.hidden_field :start_date, :value => Time.now.strftime("%d-%b-%Y")%>
+    <%= f.hidden_field :end_date, :value => Time.now.strftime("%d-%b-%Y")%>
+    <%= f.hidden_field :leave_type, :value => "Earned leave"%>
+    <%= f.hidden_field :admin_comments, :value => "Quarterly Credit"%>
+    <%= f.hidden_field :no_of_days, :value => 3%>
+<div class="actions">
+   <%= f.submit 'Quarterly leave credit', :confirm => 'Are you sure to credit?'  %>
+</div>
+<% end %>
+
+

@@ -1,0 +1,18 @@
+
+<%=form_for @leaves, :url =>{:action => 'aupdate'} do |l|  %>
+  <label for="leave_type">Encashed EL</label>
+  <%=l.text_field :no_of_days, :size=>'15' %> <br/><br/>
+  <%=l.hidden_field :leave_type, :value => "EL"%>
+  <%=l.hidden_field :start_date, :value => Date.today%>
+  <%=l.hidden_field :end_date, :value => Date.today%>
+  <%=l.hidden_field :request_date, :value => Date.today%>
+  <%=l.hidden_field :admin_comments, :value => 'Encashed leave'%>
+  <%=l.hidden_field :action_remarks, :value => ''%>
+  <%=l.hidden_field :status, :value => 'debit'%>
+<% end %>
+
+<div class="buttons">
+	<input type="submit" name="commit" value="Update Employee" class="button_large" tabindex="8"> 
+	<!--<input type="reset" name="cancel" value="Cancel" class="button_large" tabindex="9">-->
+</div>
+

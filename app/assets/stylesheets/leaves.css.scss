@@ -1,0 +1,79 @@
+// Place all the styles related to the Leaves controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+h3{margin-left:25px;font-size:1.2em;margin-bottom:30px;}
+#emp_leave_request label{font-size:.9em; width:210px;margin-left:20%;margin-bottom:20px;}
+#emp_leave_request input[type="select"]{height:12px;font-size:.8em; width: 120px;}
+
+#emp_leave_request #leave_start_date_3i{width:50px;font-size:.9em}
+#emp_leave_request #leave_start_date_2i{width:60px;font-size:.9em}
+#emp_leave_request #leave_start_date_1i{width:60px;font-size:.9em}
+
+#emp_leave_request #leave_end_date_3i{width:50px;font-size:.9em}
+#emp_leave_request #leave_end_date_2i{width:60px;font-size:.9em}
+#emp_leave_request #leave_end_date_1i{width:60px;font-size:.9em}
+
+#emp_search{
+width:300px;
+margin-left:20%;
+padding:20px 10px 20px 10px;
+margin-bottom:10px;
+}
+
+#emp_search_appr{
+width:100px;
+margin-left:10%;
+padding:20px 10px 20px 10px;
+margin-bottom:10px;
+}
+
+#emp_search_history{
+width:100px;
+margin-left:10%;
+padding:20px 10px 20px 10px;
+margin-bottom:10px;
+}
+
+
+#leave_req{
+margin-left:0%;
+margin-right:5%;
+margin-top:20px;
+border-radius:5px;
+border:1px solid grey;
+padding:30px 5px 20px 5px;
+}
+
+.leave_button, .leave_action_button{
+background-color:#fceabb;
+width:150px;
+height:40px;
+border-radius:4px;
+margin-left:35%;
+background: -moz-linear-gradient(top, #fceabb 0%, #fccd4d 50%, #f8b500 51%, #fbdf93 100%); /* firefox */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fceabb), color-stop(50%,#fccd4d), color-stop(51%,#f8b500), color-stop(100%,#fbdf93));
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=0 );
+font-weight: bold; display:block; padding: 10px 20px; color: #FFF; text-shadow: #333 1px 1px 5px; text-decoration:none;
+-moz-box-shadow: 0px 0px 5px #333;
+-webkit-box-shadow: 0px 0px 5px #333;
+}
+
+#lv_dtl label{font-size:.9em; width:210px;margin-left:20%;margin-bottom:20px; width:200px; margin-right:20px;float:left; clear:left;}
+#lv_dtl .emp_lv_dt{font-size:.9em; width:auto; float:left;}
+#lv_dtl .emp_lv_dt_tba{font-size:.9em; font-weight:bold; color: #3DBC5E; width:auto; float:left;}
+
+#lv_req_dtl{border:1px solid #9B9DA3; border-radius:5px;margin:5% 5% 5% 5%; padding: 20px 1% 20px 1%;}
+
+#emp_req_dtls textarea{
+font-size:.92em;
+}
+
+#emp_req_dtls #emp_leave_action{
+font-size:.92em;
+}
+
+#leave_request_remarks{
+font-size:.92em;
+}

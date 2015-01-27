@@ -1,0 +1,34 @@
+<% content_for(:page_title, "Alloted Optional Holiday") %>
+<% content_for :emp_sel do %>
+
+<div id="emp_leave_request">
+<%= form_for :leave_oh, :url => ohcreate_leaves_path  do |f| -%>
+<fieldset id="new_rt_holiday">
+     <%content_for(:page_title, "New Holiday")%>
+       <h3>RapidThink allowed Opt/Holiday</h3> 
+            <label for="rt_holiday_date">Start Date</label>
+  <%= f.date_select :start_date,:default => Date.today,:order => [:day, :month, :year], :use_short_month => true, :start_year => (Date.today.year-10), :end_year => (Date.today.year + 10) %><br/><br/>
+            <label for="rt_holiday_date">End Date</label>
+  <%= f.date_select :end_date,:default => Date.today,:order => [:day, :month, :year], :use_short_month => true, :start_year => (Date.today.year-10), :end_year => (Date.today.year + 10) %><br/><br/>
+          <label for="rt_holiday_reason">Allowed OH days</label>
+            <%= f.text_field :no_of_days, :size => 12 %><br/><br/>
+ <label for="rt_holiday_type"></label>
+
+<%=f.hidden_field :status, :value => 'Credit' %> 
+<%=f.hidden_field :leave_type, :value => 'OH' %> 
+<%=f.hidden_field :request_remarks, :value => 'O/H credit' %> 
+<%=f.hidden_field :admin_comments, :value => 'allowed optional holiday' %> 
+
+     
+  <div class="buttons">
+     <%= f.submit 'submit', :class => 'new_holiday_button' %>
+  </div>
+ </fieldset>
+<% end %>
+</div>
+
+<% end %>
+
+
+
+

@@ -1,0 +1,33 @@
+ <% content_for(:page_title, "Blog details") %>
+<% content_for :emp_sel do %>
+<fieldset id="blog_body">
+<h3><%=@article.title%></h3>
+<div id="blog_text">
+  <%=@article.body%><br/><br>
+<span id="blog_author">Author: <%=Employee.find(@article.employee_id).first_name%> <%=Employee.find(@article.employee_id).last_name%></span><br/>
+<span id="blog_date">Date: <%=@article.created_at.strftime('%d-%m-%y')%></span>
+</div>
+<div id="blog_actions">
+<% if @article.author_emp_id==@emp.emp_id %>
+     <%=link_to "Edit Blog Post", edit_article_path%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <%=link_to "Delete Blog Post", article_path, :method => 'delete', :id => @article.id, :confirm => 'Are you sure you want to delete this blog post?'%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<% end %>
+     <%=link_to "Comment",:action => "anew"%>
+</div>
+<br/>
+<%= render "anew" %>
+<br/>
+<div id="blog_comments">
+     <h4>Comments</h4>
+       <div id="blog_com">
+	<% @comments.each do |comment| %>
+ <span id="blog_commenter"><%= Employee.find_by_emp_id(comment.commenter_emp_id).first_name %> <%= Employee.find_by_emp_id(comment.commenter_emp_id).last_name %> says:</span><br>
+            <div id="comment_body">
+              <%= comment.body %><br><br>
+            </div>
+        <% end %>
+        </div>
+       <%= will_paginate @comments %>
+</div>
+</fieldset>
+<% end %>
